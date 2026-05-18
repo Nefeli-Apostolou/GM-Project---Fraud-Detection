@@ -3,3 +3,16 @@ eth_tx_last4days.csv
 eth_tx_last4days_clean.csv
 eth_edges
 .DS_Store
+
+wash_trading_addresses_detected.csv
+wash_traidin_addresses_detected.csv
+phishing_addresses_detected.csv
+mixer_addresses_detected.csv
+infomap_communities.csv
+ethereum_full_graph.pt
+
+time_motifs.ipynb
+time_motifs_2.ipynb
+
+nodes_communities_with_all_motifs.csv
+nodes_with_temporal_motifs_1h.csv
