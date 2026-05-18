@@ -1,3 +1,5 @@
 # Specific data files
 eth_tx_last4days.csv
+eth_tx_last4days_clean.csv
 eth_edges
+.DS_Store
