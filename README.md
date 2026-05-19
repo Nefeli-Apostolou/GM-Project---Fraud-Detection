@@ -1,10 +1,10 @@
 # GM Project — Fraud Detection in the Ethereum Transaction Network
 
-This repository contains the code and analysis for a graph mining project focused on detecting and characterising fraudulent behaviour in the Ethereum transaction network.
+This repository contains the code and analysis for the Graph Mining course project focused on detecting and characterising fraudulent behaviour in the Ethereum transaction network.
 
-The project builds a directed transaction graph from a multi-day sample of Ethereum transactions and studies whether suspicious accounts differ from ordinary accounts in terms of structural position, transaction flow, community membership, temporal motifs, and Graph Neural Network embeddings.
+In this project we build a directed transaction graph from a multi-day sample of Ethereum transactions and study whether suspicious accounts differ from ordinary accounts in terms of structural position, transaction flow, community membership, temporal motifs, and Graph Neural Network embeddings.
 
-Full datasets, intermediate outputs, and large generated files are available in the shared Google Drive folder:
+R code, full datasets, intermediate outputs, and large generated files are available in the shared Google Drive folder:
 
 [Google Drive — Graph Mining Project Files](https://drive.google.com/drive/folders/1TGysVam3qqoxEQeXC_PNHLCyV_dDrk17?usp=sharing)
 
@@ -17,8 +17,8 @@ The main objective is to analyse whether known or suspected fraudulent Ethereum 
 The project focuses on three related questions:
 
 1. Do fraudulent addresses have different structural properties from normal addresses?
-2. Do transaction flows starting from suspicious accounts propagate differently over time?
-3. Can community structure, temporal motifs, and GNN-based representations help identify suspicious accounts or suspicious communities?
+2. Do Time Motifs aid in the identification of said fraudulent addresses?
+3. Can community structure, basic node features and temporal motifs used in a  GNN-based representations help identify suspicious accounts or suspicious communities?
 
 ---
 
@@ -73,11 +73,11 @@ GM-Project---Fraud-Detection/
 | `ethereum_motif_analysis.ipynb` | Motif-based analysis of suspicious transaction structures |
 | `snapml_motifs.ipynb` | Snap ML motif feature extraction |
 | `time_motifs_all_nodes.ipynb` | Temporal motif extraction for all nodes |
-| `time_motifs_communities.ipynb` | Temporal motif analysis at community level |
+| `time_motifs_communities.ipynb` | Temporal motif extraction at community level |
 
 ---
 
-## Methodology
+## Methodology and Past DDMCS Project explanation
 
 ### 1. Graph Construction
 
@@ -91,7 +91,7 @@ Each node corresponds to an Ethereum address, and each directed edge corresponds
 
 The graph was used both as:
 
-- a static directed network for structural analysis;
+- a static aggregated directed network for structural analysis;
 - a temporal transaction network for cascade and motif analysis;
 - an input graph for Graph Neural Network experiments.
 
@@ -129,14 +129,12 @@ For each node, we computed graph-level structural features such as:
 | `out_degree` | Number of outgoing transaction links |
 | `pagerank` | Importance of the node based on incoming flow |
 | `betweenness` | Extent to which the node acts as a bridge |
-| `eigenvector_centrality` | Connection to other important nodes |
-| `clustering_coefficient` | Local density around the node |
 
 These features were used as the basic node-level input features for the GNN models.
 
 ---
 
-### 4. Community Detection
+### 4. Community Detection (DDMCS past project)
 
 Community detection was used to understand whether fraudulent accounts were isolated or concentrated in specific regions of the graph.
 
@@ -155,7 +153,7 @@ Community analysis was used to study:
 
 ---
 
-### 5. Temporal Cascade Analysis
+### 5. Temporal Cascade Analysis (DDMCS past Project)
 
 We analysed how transactions propagate from suspicious seed addresses over time.
 
@@ -210,8 +208,6 @@ The general semi-supervised setup was:
 4. Compute the loss only on labelled nodes.
 5. Use the trained model to predict fraud probabilities for other nodes.
 
-This follows the idea that the GNN can use the full graph topology even when only a subset of nodes has labels.
-
 ---
 
 ## Model Variants
@@ -230,7 +226,7 @@ Several feature configurations were tested.
 
 ## Main Findings
 
-The most important result is that motif features alone were not sufficient for reliable fraud classification.
+The most important result is that motif features alone were not sufficient for reliable fraud classification, as also shown in various papers.
 
 The basic structural features were necessary for the models to learn meaningful fraud-related patterns. Motif-derived features were more useful when interpreted as complementary information rather than as a replacement for basic graph features.
 
@@ -267,64 +263,9 @@ Drive folder:
 
 ---
 
-## Requirements
-
-The project uses both Python and R.
-
-Main Python libraries:
-
-```text
-pandas
-numpy
-networkx
-matplotlib
-scikit-learn
-torch
-torch-geometric
-```
-
-Additional tools used:
-
-```text
-Snap ML
-Google Colab
-Google Drive
-```
-
-Main R libraries used in the broader project workflow:
-
-```text
-data.table
-dplyr
-igraph
-ggraph
-readr
-knitr
-```
-
----
-
 ## Reproducibility Notes
 
-To reproduce the project:
-
-1. Clone this repository.
-2. Download the required large files from the Google Drive folder.
-3. Place the files in the same directory structure used in the notebooks, or update the paths manually.
-4. Run the notebooks in the following approximate order:
-
-```text
-Ethereum_Data_Collection.ipynb
-EDA.ipynb
-ethereum_motif_analysis.ipynb
-time_motifs_all_nodes.ipynb
-time_motifs_communities.ipynb
-snapml_motifs.ipynb
-Graph_Mining_Project_cleaned.ipynb
-```
-
 Some notebooks were designed to run in Google Colab and may require mounting Google Drive.
-
 ---
 
 ## Limitations
@@ -340,8 +281,6 @@ Main limitations include:
 - model performance depends on the negative sampling strategy;
 - the dataset covers only a short observation period.
 
-Despite these limitations, the project shows how structural graph features, temporal motifs, community detection, and GNN-based embeddings can be combined to study suspicious behaviour in blockchain transaction networks.
-
 ---
 
 ## Authors
@@ -349,21 +288,5 @@ Despite these limitations, the project shows how structural graph features, temp
 - Yara Osama Abbas Farid Youssef
 - Nefeli Apostolou
 - Augusto de Luzenberger Milnernsheim
+- Angelina Kolopova
 
----
-
-## Project Summary
-
-This project investigates fraud detection in the Ethereum transaction network using graph mining techniques.
-
-The final workflow combines:
-
-- transaction graph construction;
-- heuristic fraud detection;
-- centrality and structural feature extraction;
-- Infomap community detection;
-- temporal cascade analysis;
-- temporal motif extraction;
-- GraphSAGE-based node classification.
-
-The key conclusion is that basic structural features are essential: motif-derived features alone are not sufficiently informative, but they can provide useful additional context when combined with graph-based representations.
