@@ -263,11 +263,6 @@ Drive folder:
 
 ---
 
-## Reproducibility Notes
-
-Some notebooks were designed to run in Google Colab and may require mounting Google Drive.
----
-
 ## Limitations
 
 This project should be interpreted as an exploratory graph mining study rather than a production fraud detection system.
