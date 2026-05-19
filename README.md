@@ -257,10 +257,6 @@ snap_ml_nodes_output.csv
 
 These files are not all stored directly on GitHub because some of them are too large.
 
-Drive folder:
-
-[https://drive.google.com/drive/folders/1TGysVam3qqoxEQeXC_PNHLCyV_dDrk17?usp=sharing](https://drive.google.com/drive/folders/1TGysVam3qqoxEQeXC_PNHLCyV_dDrk17?usp=sharing)
-
 ---
 
 ## Limitations
