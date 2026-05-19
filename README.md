@@ -276,6 +276,7 @@ Main limitations include:
 
 - fraud labels are partially heuristic and therefore noisy;
 - many normal nodes are unlabelled rather than certainly legitimate;
+- our labelled normal nodes may actually be fraudulent ones so false positive count might be actually lower in reality;
 - Ethereum transaction behaviour is highly imbalanced;
 - motif features depend strongly on the chosen time window;
 - model performance depends on the negative sampling strategy;
