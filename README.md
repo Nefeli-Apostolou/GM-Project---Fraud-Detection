@@ -189,7 +189,7 @@ Examples of temporal motifs include:
 
 Temporal motif counts were computed both:
 
-- for all nodes;
+- for all nodes.
 - within communities.
 
 These motif features were later tested as additional inputs for machine learning models.
