@@ -280,5 +280,5 @@ Main limitations include:
 - Yara Osama Abbas Farid Youssef
 - Nefeli Apostolou
 - Augusto de Luzenberger Milnernsheim
-- Angelina Kolopova
+- Angelina Kholopova
 
